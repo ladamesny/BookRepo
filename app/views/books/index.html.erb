@@ -1,0 +1,69 @@
+<h1 align="center">Larry's Bookstore</h1>
+<br>
+<div id="addbox" style="margin-left:10em;margin-right: 12em; background-color: #f5f5dc;">
+  <h3>Add a book</h3>
+  <%= form_for(@book, url: add_books_path) do |f| %>
+  <% if @book.errors.any? %>
+    <ul>
+    <% @book.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>  
+  <% end %>
+      <div>
+        <%= f.label :access_no %>
+        <%= f.text_field :access_no %>
+      </div>
+      <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <%= f.label :edition %>
+        <%= f.text_field :edition %>
+      </div>
+      <div>
+        <%= f.label :publisher %>
+        <%= f.text_field :publisher %>
+      </div>
+      <%= f.submit 'Add Book'%>
+  <% end %>
+<!--   <%= form_tag('/books/add', method: 'post') do %>
+    <%= image_tag("add_book.png", height: '200', width:'200', align: 'right') %>
+    Access No:<br><%= text_field_tag(:b_access_no) %><br><br>
+    Title:<br><%= text_field_tag(:b_title) %><br><br>
+    Edition:<br><%= text_field_tag(:b_edition) %><br><br>
+    Publisher:<br><%= text_field_tag(:b_publisher) %><br><br>
+    <%= submit_tag("Add Book")%>
+  <% end %> -->
+</div>
+
+<div id="searchbox" style="margin-left:10em;margin-right: 12em; background-color: #fffacd;">
+<%= image_tag("search.png", height: '100', width:'100', align: 'left') %>
+<h3>Search for Book</h3>
+<%= form_tag("/books/search", method: "post") do %>
+  <center>Title: <%= text_field_tag(:bookTitle) %></center>
+  <center><br><%= submit_tag("Search") %></center>
+  <br>
+<%end%>
+</div>
+
+<div>
+  
+  <div id="showbox" style="margin-left:10em;margin-right: 12em; background-color: #e1e1bd;" align="center">
+  <%= image_tag("all.png", height: '100', width: '100') %>
+  <h5>Show all books</h5>
+  <%= form_tag("/books/show", method: "post") do %>
+    <center><%= submit_tag("Show All") %></center>
+  <%end%>
+  </div>
+
+  <div style="margin-left:10em;margin-right: 12em; background-color: #fffacd" align="center">
+    <%= image_tag("del.png", height: '100', width: '100') %>
+    <h5>Delete book by Title</h5>
+    <%= form_tag("/books/del", method: "post") do %>
+    Title: <%= text_field_tag(:BookT) %> <br />
+    <%= submit_tag("Delete") %>
+    <%end%>
+  </div>
+</div>

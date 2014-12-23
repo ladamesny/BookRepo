@@ -1,0 +1,34 @@
+<h2 align="center">Search Results</h2>
+<div id="container">
+  <%= image_tag("abc.png", height: '135', width: '105', align: 'left') %><br>
+  <div id="srchbox">
+  <table border="1">
+    <% @t=Book.search_by_title(params[:bookTitle]).to_a %>
+    <tr>
+      <th>Access No</th>
+      <th>Title</th>
+      <th>Edition</th>
+      <th>Publisher</th>
+    </tr>
+    <% if @t.size == 0 %>
+      <tr>
+        <td>Note found</td>
+        <td>Note found</td>
+        <td>Note found</td>
+        <td>Note found</td>
+      </tr>
+    <% else %>
+    <tr>
+    <% @t.each do |t| %>
+      <td><%=t.access_no%></td>
+      <td><%=t.title%></td>
+      <td><%=t.edition%></td>
+      <td><%=t.publisher%></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </table>
+  </div>
+</div>
+<br>
+<a href="/">Back</a>

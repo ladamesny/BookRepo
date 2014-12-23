@@ -1,0 +1,13 @@
+<div id="cotainer">
+  <%=image_tag("abc.png", height: '135', width: '105', align: 'left')%><br>
+  <div id="srchbox">
+    <% @t=Book.find_by_title(params[:BookT])%>
+    <% if @t.nil? %>
+    <h4>Book Not Found</h4>
+    <% else %>
+    <% @t.destroy %>
+    <h4>Deleted...</h4>
+    <%end%>
+  </div>
+</div>
+<a href="/">Back</a>

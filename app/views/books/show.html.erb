@@ -1,0 +1,23 @@
+<h2 align="center">All books in Store</h2>
+<div id="container">
+<%= image_tag("abc.png", height: '135', width: '105', align: 'left')%><br>
+  <div id="shwbox">
+    <table border="1" cellspacing="5" cellpadding="5" bgcolor="#87ceeb">
+    <tr>
+      <th>Access No.</th>
+      <th>Title</th>
+      <th>Edition</th>
+      <th>Publisher</th>
+    </tr>
+    <% Book.find_each do |b| %>
+    <tr>
+      <td><%=b.access_no%></td>
+      <td><%=b.title%></td>
+      <td><%=b.edition%></td>
+      <td><%=b.publisher%></td>
+    </tr> 
+    <% end %>     
+    </table>
+  </div>
+</div>
+<a href="/">Back</a>
